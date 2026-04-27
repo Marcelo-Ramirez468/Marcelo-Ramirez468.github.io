@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio | Jane Doe</title>
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-blue: #2563eb;
+            --dark-grey: #1e293b;
+            --medium-grey: #64748b;
+            --light-grey: #f1f5f9;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-grey);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* --- Scroll Animation Classes --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-grey);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* --- Hero Section --- */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at top right, #eff6ff, transparent);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-grey);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--medium-grey);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+            filter: brightness(1.1);
+        }
+
+        /* --- Global Section Styling --- */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-blue);
+        }
+
+        /* --- About Section --- */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: var(--light-grey);
+            color: var(--dark-grey);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- Experience Section --- */
+        #experience { background: var(--light-grey); }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .exp-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .exp-card h3 { color: var(--dark-grey); margin-bottom: 0.5rem; }
+        .exp-card .company { color: var(--primary-blue); font-weight: 700; margin-bottom: 1rem; display: block; }
+        .exp-card ul { margin-left: 1.2rem; color: var(--medium-grey); }
+
+        /* --- Projects Grid --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            background: var(--dark-grey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .project-body { padding: 1.5rem; }
+        .project-body h4 { margin-bottom: 0.8rem; }
+        .project-body p { color: var(--medium-grey); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark-grey);
+            color: var(--white);
+            padding: 5rem 10% 2rem;
+            text-align: center;
+        }
+
+        .contact-info h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .contact-info p { color: var(--medium-grey); margin-bottom: 2.5rem; }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover { opacity: 1; color: var(--primary-blue); }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--medium-grey);
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .about-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">JANE.DOE</a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Work</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="hero-content reveal">
+            <h1>Designing the future of <span style="color: var(--primary-blue);">Digital Strategy</span>.</h1>
+            <p>I am a multidisciplinary Specialist focusing on high-impact solutions for modern businesses. Let's build something remarkable.</p>
+            <a href="#projects" class="btn">View My Portfolio</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-container">
+            <div class="reveal">
+                <h2 class="section-title">About Me</h2>
+                <p>With over five years of experience in the industry, I specialize in bridging the gap between complex technical requirements and intuitive user experiences. My approach is data-driven, focused on scalability, and always centered around the end-user.</p>
+                <br>
+                <p>When I'm not working, you'll find me exploring new technologies or contributing to open-source projects.</p>
+            </div>
+            <div class="reveal">
+                <h2 class="section-title">Expertise</h2>
+                <div class="skills-grid">
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">UX/UI Design</span>
+                    <span class="skill-tag">Strategic Planning</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Agile Workflow</span>
+                    <span class="skill-tag">Cloud Architecture</span>
+                    <span class="skill-tag">Python & SQL</span>
+                    <span class="skill-tag">React.js</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title reveal">Professional Experience</h2>
+        <div class="timeline">
+            <div class="exp-card reveal">
+                <span class="company">Global Solutions Corp</span>
+                <h3>Senior Project Lead</h3>
+                <p style="margin-bottom: 1rem; font-weight: 500;">2021 — Present</p>
+                <ul>
+                    <li>Led a cross-functional team of 15 to deliver a flagship SaaS product 2 months ahead of schedule.</li>
+                    <li>Optimized internal workflows resulting in a 30% reduction in operational overhead.</li>
+                    <li>Managed a multi-million dollar budget across three separate development phases.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card reveal">
+                <span class="company">Innovative Tech Inc</span>
+                <h3>Digital Strategist</h3>
+                <p style="margin-bottom: 1rem; font-weight: 500;">2018 — 2021</p>
+                <ul>
+                    <li>Developed market entry strategies for four international startup clients.</li>
+                    <li>Executed A/B testing frameworks that improved conversion rates by 45%.</li>
+                    <li>Collaborated directly with stakeholders to align technical goals with business KPIs.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title reveal">Selected Works</h2>
+        <div class="project-grid">
+            <div class="project-card reveal">
+                <div class="project-img">Project Visualization One</div>
+                <div class="project-body">
+                    <h4>Nexus Analytics Dashboard</h4>
+                    <p>A real-time data visualization tool designed for enterprise-level logistics tracking.</p>
+                    <a href="#" style="color: var(--primary-blue); text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">VIEW CASE STUDY →</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-img">Project Visualization Two</div>
+                <div class="project-body">
+                    <h4>Aero Mobile Experience</h4>
+                    <p>Redefining the mobile banking experience for Gen-Z users with an emphasis on accessibility.</p>
+                    <a href="#" style="color: var(--primary-blue); text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">VIEW CASE STUDY →</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-img">Project Visualization Three</div>
+                <div class="project-body">
+                    <h4>GreenRoot E-Commerce</h4>
+                    <p>A sustainable marketplace architecture built with modern headless CMS technologies.</p>
+                    <a href="#" style="color: var(--primary-blue); text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">VIEW CASE STUDY →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="contact-info reveal">
+            <h2>Ready to collaborate?</h2>
+            <p>I'm currently available for selective freelance opportunities and speaking engagements.</p>
+            <div class="social-links">
+                <a href="#">LINKEDIN</a>
+                <a href="#">GITHUB</a>
+                <a href="#">TWITTER</a>
+                <a href="#">EMAIL</a>
+            </div>
+            <p class="copyright">© 2026 Jane Doe. All rights reserved. Built with precision.</p>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Intersection Observer for Scroll Animations
+         */
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        /**
+         * Smooth Scroll for Navigation Links
+         */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
