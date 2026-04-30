@@ -109,19 +109,43 @@
             font-size: 1.1rem;
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section & Headshot Styling --- */
         #home {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 10%;
+            padding: 120px 10% 80px;
             background: radial-gradient(circle at top right, #eff6ff, transparent);
             text-align: center;
         }
 
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .headshot-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--white);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            background-color: var(--light-grey); /* Fallback color */
+        }
+
+        .headshot-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
         .hero-content h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             line-height: 1.1;
             margin-bottom: 1.5rem;
             color: var(--dark-grey);
@@ -268,6 +292,8 @@
             .about-container { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             section { padding: 60px 5%; }
+            #home { padding-top: 100px; }
+            .headshot-container { width: 160px; height: 160px; }
         }
     </style>
 </head>
@@ -281,14 +307,19 @@
             <a href="#experience">Career</a>
             <a href="#projects">My Work</a>
             <a href="#hobbies">Life</a>
-            <a href="#contact">Say Hello</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <section id="home">
         <div class="hero-content reveal">
+            
+            <div class="headshot-container">
+                <img src="marcelo-headshot.jpg" alt="Marcelo Ramirez Headshot">
+            </div>
+
             <h1>Hi, I'm <span style="color: var(--primary-blue);">Marcelo</span>.</h1>
-            <p>I'm an Accounting student at Rutgers Business School with a passion for Business Analytics. I love using data to solve puzzles and help organizations thrive.</p>
+            <p>I'm an Accounting student at Rutgers Business School with a passion for Business Analytics. It's nice to put a face to the name—I love using data to solve puzzles and help organizations thrive.</p>
             <a href="#experience" class="btn">See what I've been up to</a>
         </div>
     </section>
@@ -297,74 +328,72 @@
         <div class="about-container">
             <div class="reveal">
                 <h2 class="section-title">The Basics</h2>
-                <p class="section-subtitle">A bit about my education and what keeps me busy at Rutgers.</p>
-                <p>I'm currently pursuing my Bachelor of Accounting with a concentration in Business Analytics at <strong>Rutgers, The State University of New Jersey</strong>[cite: 6, 7, 8]. I'm on track to graduate in May 2027 and am proud to maintain a 3.73 GPA[cite: 7, 8].</p>
+                <p class="section-subtitle">Education and campus life at Rutgers.</p>
+                <p>I'm pursuing my Bachelor of Accounting at <strong>Rutgers Business School</strong> (Class of 2027) with a concentration in Business Analytics and a 3.73 GPA.</p>
                 <br>
-                <p><strong>Outside of class, you can find me here:</strong></p>
+                <p><strong>Campus Involvement:</strong></p>
                 <ul style="margin-left: 20px; color: var(--medium-grey);">
-                    <li>Leading initiatives at Campus Light Church [cite: 10]</li>
-                    <li>Exploring the market with the Rutgers Real Estate Club [cite: 11]</li>
-                    <li>Training with the Rutgers Brazilian Jiu-jitsu team [cite: 12]</li>
+                    <li>Student Leader, Campus Light Church</li>
+                    <li>Member, Rutgers Real Estate Club</li>
+                    <li>Member, Rutgers Brazilian Jiu-jitsu</li>
                 </ul>
             </div>
             <div class="reveal">
                 <h2 class="section-title">Technical Toolkit</h2>
-                <p class="section-subtitle">The skills I'm sharpening every day.</p>
+                <p class="section-subtitle">Skills I use to drive value.</p>
                 <div class="skills-grid">
-                    <span class="skill-tag">Microsoft Excel [cite: 36]</span>
-                    <span class="skill-tag">Digital Assurance [cite: 17, 18]</span>
-                    <span class="skill-tag">Deficiency Analysis [cite: 20]</span>
-                    <span class="skill-tag">Management Consulting [cite: 14]</span>
-                    <span class="skill-tag">Tax & Audit Exposure [cite: 24]</span>
-                    <span class="skill-tag">Customer Relations [cite: 28]</span>
+                    <span class="skill-tag">Microsoft Excel</span>
+                    <span class="skill-tag">Digital Assurance</span>
+                    <span class="skill-tag">Deficiency Analysis</span>
+                    <span class="skill-tag">Management Consulting</span>
+                    <span class="skill-tag">Tax & Audit Exposure</span>
+                    <span class="skill-tag">Data Interpretation</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="experience">
-        <h2 class="section-title reveal">My Professional Journey</h2>
-        <p class="section-subtitle reveal">A look at where I've worked and what I've learned.</p>
+        <h2 class="section-title reveal">Professional Journey</h2>
         <div class="timeline">
             <div class="exp-card reveal">
-                <span class="company">Ernst & Young (EY) | Iselin, NJ [cite: 22]</span>
+                <span class="company">Ernst & Young (EY) | Iselin, NJ</span>
                 <h3>Launch Intern</h3>
-                <p style="margin-bottom: 1rem; font-weight: 500; color: var(--medium-grey);">June 2025 — August 2025 [cite: 22]</p>
+                <p style="margin-bottom: 1rem; font-weight: 500; color: var(--medium-grey);">June 2025 — August 2025</p>
                 <ul>
-                    <li>I had the chance to rotate through both the Tax and Audit service lines, getting a real-world look at how a Big Four firm operates[cite: 24].</li>
-                    <li>Attending client meetings and shadowing pros gave me invaluable insights into high-level business functions[cite: 25].</li>
+                    <li>Gained rotational exposure to Tax and Audit service lines at a Big Four firm.</li>
+                    <li>Shadowed professionals and attended client meetings for high-level business insights.</li>
                 </ul>
             </div>
 
             <div class="exp-card reveal">
-                <span class="company">Eddie Bauer | Paramus, NJ [cite: 26]</span>
+                <span class="company">Eddie Bauer | Paramus, NJ</span>
                 <h3>Sales Associate</h3>
-                <p style="margin-bottom: 1rem; font-weight: 500; color: var(--medium-grey);">May 2023 — December 2024 [cite: 26]</p>
+                <p style="margin-bottom: 1rem; font-weight: 500; color: var(--medium-grey);">May 2023 — December 2024</p>
                 <ul>
-                    <li>I enjoyed helping about 20 customers a day find exactly what they needed[cite: 27, 28].</li>
-                    <li>I handled transactions and cash with care while making sure the store stayed welcoming and organized[cite: 29, 30].</li>
+                    <li>Managed customer relations and transactions for 20+ clients daily.</li>
+                    <li>Maintained store standards and inventory organization.</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="projects">
-        <h2 class="section-title reveal">Projects & Simulations</h2>
-        <p class="section-subtitle reveal">Some of the "deep dives" I've taken into the professional world.</p>
+        <h2 class="section-title reveal">My Work</h2>
         <div class="grid-layout">
             <div class="card reveal">
-                <div class="card-img" style="background: var(--dark-grey);">PwC Job Simulation [cite: 17]</div>
+                <div class="card-img" style="background: var(--dark-grey);">PwC Simulation</div>
                 <div class="card-body">
                     <h4>Digital Assurance & Transparency</h4>
-                    <p>I completed a simulation focused on assessing digital processes, testing sample controls, and analyzing deficiencies[cite: 18, 19, 20].</p>
+                    <p>Assessed digital processes, tested sample controls, and analyzed deficiencies in a client engagement simulation.</p>
                 </div>
             </div>
 
             <div class="card reveal">
-                <div class="card-img" style="background: var(--primary-blue);">Management Consulting [cite: 14]</div>
+                <div class="card-img" style="background: var(--primary-blue);">Management Consulting</div>
                 <div class="card-body">
                     <h4>Strategy & Success</h4>
-                    <p>I investigated a large organization's management structure, helping drive a 50% increase in consumer satisfaction[cite: 15, 16].</p>
+                    <p>Analyzed organizational structures to drive success, resulting in a 50% increase in consumer satisfaction.</p>
                 </div>
             </div>
         </div>
@@ -372,50 +401,47 @@
 
     <section id="hobbies" style="background-color: var(--light-grey);">
         <h2 class="section-title reveal">Community & Life</h2>
-        <p class="section-subtitle reveal">What I care about when I'm not looking at a spreadsheet.</p>
         <div class="grid-layout">
             <div class="card reveal">
-                <div class="card-img" style="background: linear-gradient(135deg, var(--primary-blue), #60a5fa);">🌍 Serving Others</div>
+                <div class="card-img" style="background: linear-gradient(135deg, var(--primary-blue), #60a5fa);">🌍 Mission Work</div>
                 <div class="card-body">
                     <h4>Lead The Cause Local</h4>
-                    <p>I spent a week in Manhattan on a missionary trip, handing out care packages to neighbors in need[cite: 32, 33, 34].</p>
+                    <p>Participated in a weeklong missionary trip in Manhattan distributing care packages.</p>
                 </div>
             </div>
 
             <div class="card reveal">
-                <div class="card-img" style="background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));">🥋 Discipline</div>
+                <div class="card-img" style="background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));">🥋 Resilience</div>
                 <div class="card-body">
                     <h4>Rutgers Jiu-Jitsu</h4>
-                    <p>Being part of the BJJ club at Rutgers teaches me resilience and keeps me physically active[cite: 12].</p>
+                    <p>Active member of the BJJ club, focusing on discipline and continuous improvement.</p>
                 </div>
             </div>
 
             <div class="card reveal">
-                <div class="card-img" style="background: linear-gradient(135deg, #3b82f6, var(--dark-grey));">⛪ Faith</div>
+                <div class="card-img" style="background: linear-gradient(135deg, #3b82f6, var(--dark-grey));">⛪ Leadership</div>
                 <div class="card-body">
-                    <h4>Student Leadership</h4>
-                    <p>My role as a Student Leader at Campus Light Church allows me to give back to my peers and my community[cite: 10].</p>
+                    <h4>Campus Light Church</h4>
+                    <p>Serving as a Student Leader to support and guide the campus community.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
     <footer id="contact">
         <div class="contact-info reveal">
             <h2>Let's connect!</h2>
-            <p>I'm always open to talking about accounting, analytics, or the best spots in New Jersey.</p>
+            <p>Always happy to chat about accounting, analytics, or community initiatives.</p>
             <div class="social-links">
-                <a href="mailto:maramirezg2005@gmail.com">maramirezg2005@gmail.com [cite: 4]</a>
-                <a href="tel:5515023309">(551) 502-3309 [cite: 3]</a>
+                <a href="mailto:maramirezg2005@gmail.com">maramirezg2005@gmail.com</a>
+                <a href="tel:5515023309">(551) 502-3309</a>
             </div>
-            <p>Fair Lawn, NJ 07410 [cite: 2]</p>
+            <p>Fair Lawn, NJ 07410</p>
             <p class="copyright">© 2026 Marcelo Ramirez.</p>
         </div>
     </footer>
 
     <script>
-        // Intersection Observer for Scroll Animations
         const observerOptions = { threshold: 0.15 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -427,7 +453,6 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Smooth Scroll for Navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
