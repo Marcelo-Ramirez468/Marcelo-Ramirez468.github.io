@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verse Memorizer | Marcelo Ramirez</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Verse Memorizer</h1>
+        <a href="index.html">&larr; Back to Portfolio</a>
+    </div>
+
+    <div class="scoreboard">
+        <div class="score-box player-score-box">
+            <h3>Marcelo</h3>
+            <p id="player-score">0</p>
+        </div>
+        <div class="vs-text">VS</div>
+        <div class="score-box enemy-score-box">
+            <h3>Satan</h3>
+            <p id="enemy-score">0</p>
+        </div>
+    </div>
+
+    <div class="flashcard-scene" id="flashcard">
+        <div class="flashcard-inner" id="flashcard-inner">
+            
+            <div class="flashcard-face flashcard-front">
+                <h2 id="ref-front">Loading...</h2>
+                <p id="first-letters"></p>
+                <div class="hint">Tap card to reveal the answer</div>
+            </div>
+
+            <div class="flashcard-face flashcard-back">
+                <h2 id="ref-back"></h2>
+                <p id="full-verse"></p>
+                
+                <div class="action-buttons">
+                    <p style="font-size: 1rem; width: 100%; margin-bottom: 10px; color: #64748b;">Did you get it right?</p>
+                    <button class="btn btn-success" id="btn-success">I Nailed It! 🎉</button>
+                    <button class="btn btn-danger" id="btn-fail">Missed It 😅</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
